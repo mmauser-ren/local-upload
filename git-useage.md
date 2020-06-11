@@ -78,6 +78,13 @@ git add 先将工作目录东西到**版本库（objects里，用`git cat-file -
 
  `git stash pop`
 
+#### 远程
+
+- 创建github空仓库，不初始化
+- git设置用户名**origin**，`$ git remote add origin git@github.com:mmauser-ren/local-upload.git`
+- 绑定SSH
+- `git push -u origin master`,推用户名，分支
+
 <hr><hr/>
 
 ## 快捷
