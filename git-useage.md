@@ -18,7 +18,7 @@ git add 先将工作目录东西到**版本库（objects里，用`git cat-file -
 
 #### 文件状态
 
-##### `git status`查看，克隆clone过来的都会被默认跟踪
+`git status`查看，克隆clone过来的都会被默认跟踪
 
 1. 未跟踪  
 2. 已跟踪
@@ -80,19 +80,19 @@ git add 先将工作目录东西到**版本库（objects里，用`git cat-file -
 
 #### 远程
 
-- 创建github空仓库，不初始化
+- 创建github**空仓库**
 
-- git设置用户名**origin**，`$ git remote add origin git@github.com:mmauser-ren/local-upload.git`
+- git设置别名**origin**，`$ git remote add origin 别名 git@github.com:mmauser-ren/local-upload.git仓库地址`
 
 - 绑定SSH
 
-- `git push -u origin master`,推项目名，分支
+- `git push -u origin master`,推**别名、分支**（生成**远程跟踪分支**），用push向远端推代码时，会生成一个当前分支对应的远程跟踪分支**（branchname->别名/branchname例：master->别名/master）**，并在远程的仓库创建此分支。
 
 - `git remote -v`查看远端仓库信息
 
-- `git remote fetch  项目名origin` 从远端获取更新没有的数据
+- `git remote fetch  项目名origin` 从远端获取没有的数据，（**读的权限有，因为项目是public**），且数据是拿到远程跟踪分支上的（~~**非本地**~~)
 
-   注：有三个分支，本地mater 、origin/master（**远程跟踪分支**）、远程master分支，
+   注：有**三个分支**，：**本地mater 分支**、**origin/master（远程跟踪分支）**、**远程master分支**，
    
     ![img](git-useage.assets/first.png) 
 
@@ -101,4 +101,5 @@ git add 先将工作目录东西到**版本库（objects里，用`git cat-file -
 ## 快捷
 
 1. st  status
-2. 
+2. ca commit -a -m
+3. c commit -m
