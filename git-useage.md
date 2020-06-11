@@ -1,6 +1,6 @@
 # git
 
-####  工作区 暂存区  版本库  
+### 工作区 暂存区  版本库  
 git文件夹里面包含：
 
 1. hooks
@@ -81,9 +81,20 @@ git add 先将工作目录东西到**版本库（objects里，用`git cat-file -
 #### 远程
 
 - 创建github空仓库，不初始化
+
 - git设置用户名**origin**，`$ git remote add origin git@github.com:mmauser-ren/local-upload.git`
+
 - 绑定SSH
-- `git push -u origin master`,推用户名，分支
+
+- `git push -u origin master`,推项目名，分支
+
+- `git remote -v`查看远端仓库信息
+
+- `git remote fetch  项目名origin` 从远端获取更新没有的数据
+
+   注：有三个分支，本地mater 、origin/master（**远程跟踪分支**）、远程master分支，
+   
+    ![img](git-useage.assets/first.png) 
 
 <hr><hr/>
 
