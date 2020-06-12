@@ -86,15 +86,37 @@ git add 先将工作目录东西到**版本库（objects里，用`git cat-file -
 
 - 绑定SSH
 
-- `git push -u origin master`,推**别名、分支**（生成**远程跟踪分支**），用push向远端推代码时，会生成一个当前分支对应的远程跟踪分支**（branchname->别名/branchname例：master->别名/master）**，并在远程的仓库创建此分支。
-
-- `git remote -v`查看远端仓库信息
+- `git push -u origin master`,推**别名、分支**（生成**远程跟踪分支**），用push向远端推代码时，会生成一个当前分支对应的远程跟踪分支**（branchname->别名/branchname例：master->别名/master）**，~~并在远程的仓库创建此分支~~(**更正：在远端仓库创建分支用`git push 别名  branchname`**)。需要注意的是
 
 - `git remote fetch  项目名origin` 从远端获取没有的数据，（**读的权限有，因为项目是public**），且数据是拿到远程跟踪分支上的（~~**非本地**~~)
 
    注：有**三个分支**，：**本地mater 分支**、**origin/master（远程跟踪分支）**、**远程master分支**，
    
     ![img](git-useage.assets/first.png) 
+   
+   
+   
+   - `git remote -v`查看远端仓库信息
+   
+   - `git push 别名  branchname` **向远程仓库新建分支，或者推送分支信息**
+   
+   - `git remote show 别名`查看一个远程仓库的信息，（显示远程仓库的分支信息、是否被跟踪······）**==且能显示远程跟踪分支和对应本地分支是否关联：只有关联的才能直接 git push 、git pull，如下图红框内的是关联过的）==**
+   
+     <img src="git-useage.assets/second.png" alt="img" style="zoom:50%;" />
+   
+     **关联方法1**
+   
+     ​     1 . `git branch --set-upstream-to=别名/本地分支名`
+   
+     ​     2 . **==`git branch -u 别名/本地分支名`,和`git branch --set-upstream-to=别名/本地分支名`一样效果==**,差别详细见**[stackoverflow-answer]( https://stackoverflow.com/questions/5697750/what-exactly-does-the-u-do-git-push-u-origin-master-vs-git-push-origin-ma )**，
+   
+   - `git remote rename oldname newname`远程仓库重命名
+   
+   - `git remote remove name`删除别名为name的远程仓库、
+   
+   - ` git branch -a` **查看所有分支：本地和跟踪分支**
+   
+   - `git clone远程仓库`自动获取一个远程仓库深度的内容（**包括所有分支的内容，b并且为这些分支创建对应的远程跟踪分支origin/branchname,但是只会创建一个本地分支master，**），并取别名为origin，，
 
 <hr><hr/>
 
@@ -103,3 +125,4 @@ git add 先将工作目录东西到**版本库（objects里，用`git cat-file -
 1. st  status
 2. ca commit -a -m
 3. c commit -m
+
