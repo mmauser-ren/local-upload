@@ -98,6 +98,79 @@
   
 ### LaTeX文档结构
 
+```
+	\section{引言}
+	\section{实验方法}
+	\section{实验结果}
+	\subsection{数据}
+	\subsection{图表}
+	\subsubsection{实验条件}
+	\subsubsection{实验过程}
+	\subsection{结果分析}
+	\section{结论}
+	\section{致谢}
+```
+
+![效果图](LaTeX.assets/image-20200701122834795.png)
+
+### LaTeX中特殊字符
+
+1. 空白符号：
+
+### LaTeX中插图
+
+**可使用命令`texdoc graphicx`查看具体细节**
+
+```
+%导言区：\usepackage{graphicx}
+%用法  ：\includegraphicss[<选项>%可选参数，例 width、scale .etc]{<文件名>%必选参数，且可以不加文件后缀名}
+%格式  ：EPS PDF PNG JPEG BMP
+\graphicspath{{figures/},} %图片在当前目录下的figures目录 
+```
+
+### LaTeX中表格制作
+
+利用tabular环境
+
+```
+	\begin{tabular}{|l|c |c ||c||| r|}
+		姓名 & 语文 & 数学 &外语 &备注 \\
+		\hline
+		姓名 & 语文 & 数学 &外语 &备注 \\
+		\hline
+		姓名 & 语文 & 数学 &外语 &备注 \\
+		姓名 & 语文 & 数学 &外语 &备注备注备注 \\
+	\end{tabular}
+```
+
+![image-20200701141341840](LaTeX.assets/image-20200701141341840.png)
+
+### LaTeX中的浮动体
+
+解决插入图像和表格的灵活性。
+
+```
+	LaTeX中的表格\ref{tab-score}： %引用
+	\begin{table}
+		\centering
+		\caption{考试成绩单}\label{tab-score} %打标签
+		\begin{tabular}{|l|c |c ||c||| r|}
+			姓名 & 语文 & 数学 &外语 &备注 \\
+			\hline
+			姓名 & 语文 & 数学 &外语 &备注 \\
+			\hline
+			姓名 & 语文 & 数学 &外语 &备注 \\
+			姓名 & 语文 & 数学 &外语 &备注备注备注 \\
+		\end{tabular}
+	\end{table}
+```
+
+类似还有figure环境：`\begin{figure}`
+
+### LaTeX 数学公式
+
+**公式及矩阵细节见 formula. tex文件**
+
 ---
 
 ### Little Hints
@@ -113,7 +186,7 @@
 5. equation类产生带编号公式：
 
    	```
-   \begin{equation}
+      	\begin{equation}
       	f(c)=2c
       	\end{equation}
       	
@@ -123,6 +196,6 @@
    ```
 
 ![image-20](LaTeX.assets/image-20200630214423098.png)
-6. `\quad`表示一个汉字的距离,`\quadd`表示两个汉字的距离。
+6. `\quad`表示一个汉字的距离,`\qquad`表示两个汉字的距离。
 7. **格式与内容分离思想**
 
