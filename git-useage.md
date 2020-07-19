@@ -82,7 +82,7 @@ git add 先将工作目录东西到**版本库（objects里，用`git cat-file -
 
 - 创建github**空仓库**
 
-- git设置别名**origin**，`$ git remote add origin 别名 git@github.com:mmauser-ren/local-upload.git仓库地址`
+- git设置别名**origin**，`$ git remote add (origin 别名) (git@github.com:mmauser-ren/local-upload.git仓库地址)`
 
 - 绑定SSH
 

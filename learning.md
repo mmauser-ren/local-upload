@@ -156,8 +156,207 @@ RotationTransform[1., {1, 1, 1}, {0, 0, 1}]
 
 ## 散度、旋度、斯托克斯公式、高斯公式、曲线曲面积分
 
-### 散度
+曲线积分第一型可以看作是求线质量，第二型可以看成求变力做功；曲面积分第一型可以看成求面质量，第二型可以看成求矢量场在曲面上的通量；矢量场中某点的散度是描述矢量场在这一点处（极小领域）的**发散**或者**汇聚**情况，与通量存在联系；高斯公式就是将闭合曲面上的通量和闭合曲面围成区域内的散度联系在一起，也就是将第二型曲面积分和三重积分联系在一起；矢量场中某点的旋度是描述矢量场在这一点处（极小领域）的旋转情况（旋转轴、旋转方向：右手螺旋.....)；斯托克斯公式就是将第二类曲线积分和曲线围成曲面内的旋度联系起来,二维的斯托克斯公式为格林公式
 
-计算公式：；
+### 曲线积分
 
+#### 第一类
+
+对应实际物理问题：已知曲线质量线密度为$ f(x,y)$,求曲线$C(A,B)$(A、B为曲线端点的质量：
+$$
+\int_{C(A,B)}f(x,y)dl
+$$
+其中ds为曲线微元：
+$$
+dl=\sqrt{dx^2+dy^2}
+$$
+当曲线方程为参数方程即：
+$$
+\left
+\{
+\begin{aligned}
+x=\phi(t)\\
+y=\psi(t)
+\end{aligned}
+\right.
+$$
+易知ds可化为：
+$$
+dl=\sqrt{{\phi'}^2(t)+{\psi'}^2(t)}
+$$
+当曲线方程为$y=y(x)$易知ds为：
+$$
+dl=\sqrt{\frac {dx^2}{dx^2}{dx^2}+\frac {dy^2}{dx^2}{dx^2}}=\sqrt{1+{y'}^2}dx
+$$
+其余情况同样根据ds定义推导
+
+#### 第二类
+
+对应实际问题：力场$\vec f(x,y)$在曲线$C(A,B)$上的做功，也就是变力做功问题：
+$$
+\int_{C(A,B)}\vec f\cdot d\vec l
+$$
+力场为矢量场具有方向性，同样ds也具有方向性：
+$$
+\vec f(x,y)=P(x,y) \vec i+Q(x,y) \vec j=(P,Q)
+$$
 矢量场中某一点$p(x,y,z)$的散度用来描述矢量场的**汇聚**和**发散**。
+
+$d \vec l$:
+$$
+d \vec l=(\cos \alpha,\cos \beta)dl
+$$
+又知：
+$$
+\left \{
+\begin{aligned}
+\cos \alpha = \frac {dx} {\sqrt{dx^2+dy^2}} \\
+\cos \beta  = \frac {dy} {\sqrt{dx^2+dy^2}}
+\end{aligned}
+\right.
+$$
+结合式（6）可知：
+$$
+\left \{
+\begin{aligned}
+\cos \alpha = \frac {dx} {dl} \\
+\cos \beta  = \frac {dy} {dl}
+\end{aligned}
+\right.
+$$
+所以积分方程可化为：
+$$
+\begin{align}
+\int_{C(A,B)}\vec f\cdot d\vec l &=\int_{C(A,B)}(P,Q) \cdot (\cos \alpha,\cos \beta)dl \\
+&= \int_{C(A,B)}(P\cos \alpha+Q\cos \beta)dl \\
+&= \int_{C(A,B)}Pdx+Qdy
+\end{align}
+$$
+式（13）对应于一二型曲面积分之间的联系。
+
+三维和二维类似。
+
+### 曲面积分
+
+#### 第一类
+
+对应物理问题:已知曲面质量面密度为$ f(x,y,z)$,求曲面$\sum$的质量：
+$$
+\int\int_\sum f(x,y,z)ds
+$$
+曲面$\sum$为$z=z(x,y)$时，空间面积微元ds如下：
+
+<img src="learning.assets/image-20200718185007080.png" alt="image-20200718185007080" style="zoom:40%;" />
+$$
+\begin{align}
+ds &= \left| \vec OB \times \vec OA \right| \\
+&=\left| (dx,0,{z'}_x dx) \times (0,dy,{z'}_y dy) \right |\\
+&=\sqrt{1+{z'}_x^2+{z'}_y^2} dx dy
+
+\end{align}
+$$
+曲面$\sum$为$x=x(z,y)$和$y=y(z,x)$情况类似推导就行。此时第一类曲面积分就化为二重积分
+
+#### 第二类
+
+实际问题：矢量场$\vec f(x,y,z)$在曲面$\vec \sum$上的通量：
+$$
+\int\int_\sum \vec f(x,y,z)d \vec s
+$$
+矢量场为：
+$$
+\vec f(x,y,z) =(P(x,y,z),Q(x,y,z),R(x,y,z))
+$$
+面积微元$d \vec s$大小等于式（16），方向为法线方向：
+$$
+d\vec s=(\cos \alpha,\cos \beta ,\cos \gamma)ds
+$$
+根据面积微元在三个坐标轴平面的投影可知：
+$$
+\left\{
+\begin{aligned}
+\frac{dxdy}{ds} = \pm \cos \gamma \\
+\frac{dydz}{ds} = \pm \cos \alpha \\
+\frac{dzdx}{ds} = \pm \cos \beta
+\end{aligned}
+\right.
+$$
+带入可知：
+$$
+\begin{align}
+\int\int_\sum \vec f(x,y,z)d \vec s &= \int\int_\sum(P,Q,R) \cdot (\cos \alpha,\cos \beta ,\cos \gamma)ds \\
+&= \int\int_\sum(P \cos \alpha+Q \cos \beta +R \cos \gamma)ds \\
+&= \pm \int\int_{a_{yz}}Pdydz \quad \pm \int\int_{a_{zx}}Qdzdx\quad \pm \int\int_{a_{xy}}Rdxdy
+\end{align}
+$$
+将第二型曲面积分化为了三个二重积分的和，注意考虑曲面的方向问题。**（值得注意的是为什么可以分开成三个二重积分。第二类曲线积分不能分为两个一维积分容易理解，因为这对应于做功与路径相关）**
+
+### 散度和gauss公式
+
+散度计算公式：
+$$
+\begin{align}
+div(\vec f) & = \nabla \cdot \vec f(x,y,z) \\
+&=(\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{\partial}{\partial z}) \cdot (P(x,y,z),Q(x,y,z),R(x,y,z)) \\
+&= \frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}\\
+\end{align}
+$$
+散度的定义为：
+$$
+\lim_{V->p} \frac {\int \int_s \vec f \cdot d \vec s }{V}
+$$
+可以形象的理解为**通量体密度**，s为闭合的曲面，v是s曲面包围着的区域。散度是一个数值，矢量场中某点的散度表示这点附近极小体积区域表面的**外法向曲面通量和**再除以区域体积，由曲面积分表示通量可知散度为正代表区域内有**”源“**，即小体积区域处矢量场向外发散（包括流出大于流入等实际情况），散度为0表示整个闭合曲面通量为零（**流入等于流出，无源，一般不可压缩流体的散度都为零**）,散度为负自行想象。。。
+
+散度计算公式的推导：
+
+<img src="learning.assets/image-20200719222702724.png" alt="image-20200719222702724" style="zoom:50%;" />
+
+如图右边长方体为一点处领域，求这个长方体的**外法向通量**可以分为3部分，首先求x方向两个面的通量和为：
+$$
+\begin{align}
+((P(x+dx,y,z)-p(x-dx,y,z))2dz2dy & =\frac {(P(x+dx,y,z)-p(x-dx,y,z)}{2dx}2dx 2dz2dy\\
+&=\frac{\partial P}{\partial x}8dxdydz
+\end{align}
+$$
+其中$8dxdydz$为区域体积，这样再求出y、z方向通量，加和除以体积就得到散度的计算公式（27），因此命名为通量体密度。
+
+----
+
+gauss公式是**使用切割思想，将闭合曲面围成的区域分割成一个一个小长方体，在整个曲面外法向上的通量等于切割后所有区域的通量和**，即：
+$$
+\begin{align}
+\int \int_{s^+} \vec f \cdot d\vec s &= \int \int \int _\Omega \nabla \cdot\vec f dV\\
+
+\end{align}
+$$
+### 旋度与stokes公式
+
+旋度计算公式：
+$$
+\begin{align}
+curl(\vec f) &= \nabla \times \vec f \\
+&= \begin{vmatrix}
+\vec i & \vec j & \vec k \\
+\frac \partial {\partial x} & \frac \partial {\partial y} &\frac \partial {\partial y}\\
+P & Q & R
+\end{vmatrix}\\
+&=
+(\frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z}) \vec i +
+(\frac{\partial P}{\partial z}-\frac{\partial R}{\partial x}) \vec j +
+(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}) \vec k
+\end{align}
+$$
+旋度的定义：
+$$
+\lim_{S->p} \frac { \int_C \vec f \cdot d \vec l }{S}
+$$
+旋度可以看成环量（环流量）面密度，由旋度的定义可知旋度是个矢量，矢量场中某点的旋度矢量包含这点的相对旋转轴，以及旋转方向，以及”转速“信息。
+
+---
+
+---
+
+关于旋度散度主要参考：
+
+1. 可汗学院的讲解，b站有视频
+2. 知乎：[深度理解数学：旋度、散度、高斯...]( https://zhuanlan.zhihu.com/p/71503766 )
