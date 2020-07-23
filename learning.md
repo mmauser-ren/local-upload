@@ -311,7 +311,7 @@ $$
 
 <img src="learning.assets/image-20200719222702724.png" alt="image-20200719222702724" style="zoom:50%;" />
 
-如图右边长方体为一点处领域，求这个长方体的**外法向通量**可以分为3部分，首先求x方向两个面的通量和为：
+如图右边长方体为一点处领域，求矢量场$\vec f(x,y,z)=(P,Q,R)$中这个长方体的**外法向通量**可以分为3部分，首先求x方向两个面的通量和为：
 $$
 \begin{align}
 ((P(x+dx,y,z)-p(x-dx,y,z))2dz2dy & =\frac {(P(x+dx,y,z)-p(x-dx,y,z)}{2dx}2dx 2dz2dy\\
@@ -322,13 +322,15 @@ $$
 
 ----
 
-gauss公式是**使用切割思想，将闭合曲面围成的区域分割成一个一个小长方体，在整个曲面外法向上的通量等于切割后所有区域的通量和**，即：
+gauss公式是**使用切割思想，将闭合曲面围成的区域分割成一个一个小长方体，在整个曲面外法向上的通量等于切割后所有区域的通量和，因为每个长方体的公共面上的通量会被相互抵消，最后只剩最外的曲面**，即：
 $$
 \begin{align}
 \int \int_{s^+} \vec f \cdot d\vec s &= \int \int \int _\Omega \nabla \cdot\vec f dV\\
 
 \end{align}
 $$
+---
+
 ### 旋度与stokes公式
 
 旋度计算公式：
@@ -351,6 +353,44 @@ $$
 \lim_{S->p} \frac { \int_C \vec f \cdot d \vec l }{S}
 $$
 旋度可以看成环量（环流量）面密度，由旋度的定义可知旋度是个矢量，矢量场中某点的旋度矢量包含这点的相对旋转轴，以及旋转方向，以及”转速“信息。
+
+旋度计算公式推导：
+
+<img src="learning.assets/image-20200720192505843.png" alt="image-20200720192505843" style="zoom:50%;" />
+
+如图所示，求场$\vec f(x,y)=(P,Q)$在p点处的**环流量（第二型曲线积分）**，分为上下、左右两部分求，首先上下：
+$$
+\begin{align}
+&=\frac{P(x_0-dx,y_0-dy)+P(x_0+dx,y_0-dy)}{2} 2dx-
+\frac{P(x_0-dx,y_0+dy)+P(x_0+dx,y_0+dy)}{2} 2dx \\
+&=-\frac{\partial P(x_0-dx,y_0)}{\partial y}2dxdy-\frac{\partial P(x_0+dx,y_0)}{\partial y}2dxdy
+\end{align}
+$$
+考虑$dx\rightarrow 0$得:
+$$
+-\frac{\partial P(x_0,y_0)}{\partial y}4dxdy
+$$
+同理求得左右的环流量为：
+$$
+\frac{\partial P(x_0,y_0)}{\partial x}4dxdy
+$$
+加和得$p(x_0,y_0)$小邻域处环流量为：
+$$
+(\frac{\partial P(x_0,y_0)}{\partial x}-\frac{\partial P(x_0,y_0)}{\partial y})4dxdy
+$$
+其中$4dxdy$为区域面积，除以面积就是环量面密度，也就是旋度（二维情况）。三维旋度可以看成在三个坐标平面分别计算，方向为右手螺旋法则。
+
+我们已知旋度的意义有矢量场的旋转趋势：可知第二型曲线积分对应变力做功物理问题，我们设定了闭合曲线的正方向为逆时针，对于力场中某点的旋度值为正，我们可以理解为力做正功，即可以理解为力场的方向与曲线正方向相同（近似，考虑力场做功的整体效应）。
+
+---
+
+stokes公式
+
+在计算空间闭合曲线的第二型曲面积分（环流量）时，我们同样可以采取分割的思想，将闭合曲线围成的平面分成一个一个小区域，因为相邻区域公共边的环流量刚好抵消，我们只需要计算闭合曲线围成平面内旋度的第二型曲面积分:
+$$
+\int_C \vec f \cdot d \vec l=\int \int (\nabla \times \vec f) \cdot d \vec s
+$$
+
 
 ---
 
