@@ -182,7 +182,7 @@ y=\psi(t)
 $$
 易知ds可化为：
 $$
-dl=\sqrt{{\phi'}^2(t)+{\psi'}^2(t)}
+dl=\sqrt{{\phi'}^2(t)+{\psi'}^2(t)}dt
 $$
 当曲线方程为$y=y(x)$易知ds为：
 $$
@@ -215,7 +215,7 @@ $$
 \end{aligned}
 \right.
 $$
-结合式（6）可知：
+结合式（6）需知 ,==方向角为路径曲线的方向角==：
 $$
 \left \{
 \begin{aligned}
@@ -386,11 +386,12 @@ $$
 
 stokes公式
 
+==注：公式使用时需要区域内不含奇点，例如分母为$x^2+y^2$就不行，这种情况需要借助挖洞法..==
+
 在计算空间闭合曲线的第二型曲面积分（环流量）时，我们同样可以采取分割的思想，将闭合曲线围成的平面分成一个一个小区域，因为相邻区域公共边的环流量刚好抵消，我们只需要计算闭合曲线围成平面内旋度的第二型曲面积分:
 $$
 \int_C \vec f \cdot d \vec l=\int \int (\nabla \times \vec f) \cdot d \vec s
 $$
-
 
 ---
 
@@ -400,3 +401,34 @@ $$
 
 1. 可汗学院的讲解，b站有视频
 2. 知乎：[深度理解数学：旋度、散度、高斯...]( https://zhuanlan.zhihu.com/p/71503766 )
+
+----
+
+## diracdelta函数积分问题
+
+容易知道$\delta$函数积分有筛选性质：
+$$
+\int_{-\infty}^\infty \delta(x)f(x) dx=f(0)
+$$
+diracdelta函数的性质(与泰勒一阶展开有关）：
+$$
+\delta(\phi (x)) = \sum_k \frac{\delta (x-x_k)}{|(\phi'(x_k)|}
+$$
+纠正误区：认为三维delta函数积分结果为f(x)==0的曲面面积，比如认为以下积分结果为球面面积$4\pi$，
+$$
+\int\int\int_{-\infty}^\infty \delta(x^2+y^2+z^2-1)dx
+$$
+但实际结果：
+
+````
+Integrate[
+ DiracDelta[x^2 + y^2 + z^2 - 1], {x, -Infinity, 
+  Infinity}, {y, -Infinity, Infinity}, {z, -Infinity, Infinity}]
+ %2Pi
+````
+
+说明两者之间不是这种对应关系。。。。
+$$
+\int_{-\infty}^\infty \delta(x^2+y^2+z^2-1)dx
+$$
+q
