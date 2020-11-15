@@ -30,4 +30,8 @@ FindFit[data, a E^Sin[x] + b x^2, {a, b}, x]
 
 ---
 
+### 2020.9.4 findminimum的玄学
 
+需要缩放待优化函数的尺度到正常，并选取正确的方法。。。，非常玄学。。如图
+
+![image-20200904115134995](MMA-LEARNING.assets/image-20200904115134995.png)
