@@ -461,7 +461,7 @@ z(u,v)
 \end{aligned}
 \right.
 $$
-则它的法向量为：
+则它的法向量为 ：
 $$
 \begin{vmatrix}
 i & j & k \\
