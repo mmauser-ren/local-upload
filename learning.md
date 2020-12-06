@@ -449,6 +449,28 @@ $$
 
 ---
 
+## 参数方程构建的曲面的法向量
+
+参数方程构建的曲面如下：
+$$
+\left\{
+\begin{aligned}
+x(u,v) \\
+y(u,v)\\
+z(u,v)
+\end{aligned}
+\right.
+$$
+则它的法向量为：
+$$
+\begin{vmatrix}
+i & j & k \\
+\frac{\partial x(u,v)}{\partial u} & \frac{\partial y(u,v)}{\partial u} & \frac{\partial z(u,v)}{\partial u} \\
+\frac{\partial x(u,v)}{\partial v} & \frac{\partial y(u,v)}{\partial v} & \frac{\partial z(u,v)}{\partial v} \\
+\end{vmatrix}
+$$
+
+
 ## 概率论
 
 ### 期望的可加性
